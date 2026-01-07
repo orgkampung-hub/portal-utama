@@ -17,7 +17,8 @@ body {
     background: #2c3e50;
     padding: 3rem;
     border-radius: 40px;
-    box-shadow: 20px 20px 60px #253544, -20px -20px 60px #33475c;
+    /* Shadow container yang lebih lembut */
+    box-shadow: 20px 20px 60px #1e2a36, -20px -20px 60px #3a526a;
     text-align: center;
     width: 90%;
     max-width: 450px;
@@ -45,7 +46,8 @@ header p {
 .btn {
     border: none;
     padding: 20px;
-    border-radius: 15px;
+    /* Bentuk membulat penuh (Pill-shaped) */
+    border-radius: 50px; 
     font-size: 1.1rem;
     font-weight: 600;
     cursor: pointer;
@@ -55,8 +57,10 @@ header p {
     gap: 15px;
     background: #2c3e50;
     color: #ecf0f1;
-    box-shadow: 8px 8px 16px #212f3d, -8px -8px 16px #374d63;
+    /* Shadow Neumorphism: Gelap di bawah-kanan, Cerah di atas-kiri */
+    box-shadow: 9px 9px 18px #212f3d, -9px -9px 18px #374d63;
     transition: all 0.3s ease;
+    outline: none;
 }
 
 .btn-bendera {
@@ -74,19 +78,22 @@ header p {
     100% { transform: translateY(0px); }
 }
 
+/* Kesan apabila butang ditekan (tenggelam ke dalam) */
 .btn:active {
-    box-shadow: inset 6px 6px 12px #212f3d, inset -6px -6px 12px #374d63;
-    transform: translateY(2px);
+    box-shadow: inset 6px 6px 12px #1e2a36, inset -6px -6px 12px #3a526a;
+    transform: scale(0.98);
 }
 
 .btn-bendera:hover {
     color: #3498db;
-    box-shadow: 8px 8px 20px #1a252f, -8px -8px 20px #3d566e;
+    /* Shadow lebih dalam semasa hover */
+    box-shadow: 12px 12px 25px #1a252f, -12px -12px 25px #3d566e;
 }
 
 .btn-cari:hover {
     color: #2ecc71;
-    box-shadow: 8px 8px 20px #1a252f, -8px -8px 20px #3d566e;
+    /* Shadow lebih dalam semasa hover */
+    box-shadow: 12px 12px 25px #1a252f, -12px -12px 25px #3d566e;
 }
 
 .icon {
