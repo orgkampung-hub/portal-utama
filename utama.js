@@ -3,7 +3,8 @@ function pilihGame(jenis) {
         // Navigasi ke projek GitHub anda
         window.location.href = "https://orgkampung-hub.github.io/Cari-perkataan/";
     } else if (jenis === 'bendera') {
-        alert("Modul Game Bendera akan datang tidak lama lagi!");
+        // Navigasi ke projek Game Bendera anda
+        window.location.href = "https://orgkampung-hub.github.io/Bendera-dunia/";
     }
 }
 
