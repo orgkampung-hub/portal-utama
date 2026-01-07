@@ -6,7 +6,6 @@
 }
 
 body {
-    /* Latar belakang gelap lembut (Slate Blue/Grey) */
     background-color: #2c3e50; 
     display: flex;
     justify-content: center;
@@ -18,7 +17,6 @@ body {
     background: #2c3e50;
     padding: 3rem;
     border-radius: 40px;
-    /* Kesan timbul gelap (Neumorphism Dark) */
     box-shadow: 20px 20px 60px #253544, -20px -20px 60px #33475c;
     text-align: center;
     width: 90%;
@@ -27,14 +25,14 @@ body {
 
 header h1 {
     font-size: 1.6rem;
-    color: #ecf0f1; /* Teks cerah */
+    color: #ecf0f1;
     letter-spacing: 1px;
     margin-bottom: 10px;
 }
 
 header p {
     font-size: 0.85rem;
-    color: #bdc3c7; /* Teks kelabu lembut */
+    color: #bdc3c7;
     margin-bottom: 40px;
 }
 
@@ -44,7 +42,6 @@ header p {
     gap: 25px;
 }
 
-/* GAYA BUTANG TIMBUL GELAP */
 .btn {
     border: none;
     padding: 20px;
@@ -58,12 +55,10 @@ header p {
     gap: 15px;
     background: #2c3e50;
     color: #ecf0f1;
-    /* Bayangan untuk kesan 3D dalam gelap */
     box-shadow: 8px 8px 16px #212f3d, -8px -8px 16px #374d63;
     transition: all 0.3s ease;
 }
 
-/* ANIMASI FLOATING */
 .btn-bendera {
     animation: float 3.5s ease-in-out infinite;
 }
@@ -79,13 +74,11 @@ header p {
     100% { transform: translateY(0px); }
 }
 
-/* KESAN APABILA DITEKAN */
 .btn:active {
     box-shadow: inset 6px 6px 12px #212f3d, inset -6px -6px 12px #374d63;
     transform: translateY(2px);
 }
 
-/* WARNA HOVER UNTUK KREATIVITI */
 .btn-bendera:hover {
     color: #3498db;
     box-shadow: 8px 8px 20px #1a252f, -8px -8px 20px #3d566e;
