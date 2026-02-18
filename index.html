@@ -1,171 +1,225 @@
 <!DOCTYPE html>
 <html lang="ms">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Portal Projek Akulas</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Portal Projek Akulas</title>
 
-<link rel="manifest" href="manifest.json">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="manifest" href="manifest.json">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 
-<style>
-/* Animasi Masuk */
-@keyframes fadeInUp {
-    from { 
-        opacity: 0; 
-        transform: translateY(30px); 
-    }
-    to { 
-        opacity: 1; 
-        transform: translateY(0); 
-    }
-}
+    <style>
+        /* Animasi Masuk */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
 
-body {
-    margin: 0;
-    font-family: 'Poppins', sans-serif;
-    background: linear-gradient(135deg, #0f0f1a, #1b1b2f);
-    color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    overflow: hidden;
-}
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #0f0f1a, #1b1b2f);
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow: hidden;
+        }
 
-.container {
-    width: 90%;
-    max-width: 500px;
-    text-align: center;
-    animation: fadeInUp 0.8s ease-out forwards;
-}
+        .container {
+            width: 90%;
+            max-width: 500px;
+            text-align: center;
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
 
-h1 { font-size: 26px; margin-bottom: 5px; }
-p { opacity: 0.7; font-size: 14px; margin-bottom: 30px; }
+        h1 { font-size: 26px; margin-bottom: 5px; }
+        p { opacity: 0.7; font-size: 14px; margin-bottom: 30px; }
 
-.menu-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-    gap: 18px;
-}
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 18px;
+        }
 
-.btn {
-    border: none;
-    padding: 22px;
-    border-radius: 16px;
-    cursor: pointer;
-    font-size: 15px;
-    font-weight: 600;
-    transition: 0.25s;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    color: white;
-}
+        .btn {
+            border: none;
+            padding: 22px;
+            border-radius: 16px;
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: 600;
+            transition: 0.25s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: white;
+        }
 
-.icon { font-size: 32px; margin-bottom: 8px; }
-.btn-bendera { background: linear-gradient(135deg, #ff6b6b, #c44569); }
-.btn-cari { background: linear-gradient(135deg, #4ecdc4, #2d98da); }
-.btn-wordsearch { background: linear-gradient(135deg, #feca57, #ff9f43); color: black; }
+        .icon { font-size: 32px; margin-bottom: 8px; }
+        .btn-bendera { background: linear-gradient(135deg, #ff6b6b, #c44569); }
+        .btn-cari { background: linear-gradient(135deg, #4ecdc4, #2d98da); }
+        .btn-wordsearch { background: linear-gradient(135deg, #feca57, #ff9f43); color: black; }
 
-.btn:hover { 
-    transform: translateY(-6px); 
-    box-shadow: 0 10px 25px rgba(0,0,0,0.4); 
-}
+        .btn:hover { 
+            transform: translateY(-6px); 
+            box-shadow: 0 10px 25px rgba(0,0,0,0.4); 
+        }
 
-/* Style Popup Install */
-#install-banner {
-    display: none;
-    position: fixed;
-    bottom: 30px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: white;
-    color: #1a1a1a;
-    padding: 12px 20px;
-    border-radius: 50px;
-    box-shadow: 0 15px 35px rgba(0,0,0,0.5);
-    z-index: 9999;
-    width: 85%;
-    max-width: 350px;
-    justify-content: space-between;
-    align-items: center;
-    animation: fadeInUp 0.5s ease-out;
-}
+        /* Iframe Overlay */
+        #game-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: black;
+            z-index: 10000;
+        }
 
-#btn-install {
-    background: #1b1b2f;
-    color: white;
-    border: none;
-    padding: 8px 18px;
-    border-radius: 25px;
-    font-weight: 700;
-    cursor: pointer;
-    font-size: 12px;
-}
+        #btn-close-game {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            z-index: 10001;
+            background: rgba(0, 0, 0, 0.6);
+            color: white;
+            border: 2px solid white;
+            border-radius: 50%;
+            width: 35px;
+            height: 35px;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
 
-footer { margin-top: 30px; font-size: 12px; opacity: 0.5; }
-</style>
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            display: block;
+        }
+
+        /* Style Popup Install */
+        #install-banner {
+            display: none;
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: white;
+            color: #1a1a1a;
+            padding: 12px 20px;
+            border-radius: 50px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+            z-index: 9999;
+            width: 85%;
+            max-width: 350px;
+            justify-content: space-between;
+            align-items: center;
+            animation: fadeInUp 0.5s ease-out;
+        }
+
+        #btn-install {
+            background: #1b1b2f;
+            color: white;
+            border: none;
+            padding: 8px 18px;
+            border-radius: 25px;
+            font-weight: 700;
+            cursor: pointer;
+            font-size: 12px;
+        }
+
+        footer { margin-top: 30px; font-size: 12px; opacity: 0.5; }
+    </style>
 </head>
 <body>
 
-<div class="container">
-    <h1>PORTAL PROJEK AKULAS</h1>
-    <p>Pilih modul permainan</p>
+    <div class="container" id="portal-ui">
+        <h1>PORTAL PROJEK AKULAS</h1>
+        <p>Pilih modul permainan</p>
 
-    <div class="menu-grid">
-        <button class="btn btn-bendera" onclick="navigasi('bendera')">
-            <div class="icon">🚩</div> Game Bendera
-        </button>
-        <button class="btn btn-cari" onclick="navigasi('cari-perkataan')">
-            <div class="icon">🔍</div> Cari Perkataan
-        </button>
-        <button class="btn btn-wordsearch" onclick="navigasi('wordsearch')">
-            <div class="icon">🧩</div> WordSearch 1v1
-        </button>
+        <div class="menu-grid">
+            <button class="btn btn-bendera" onclick="bukaGame('bendera')">
+                <div class="icon">🚩</div> Game Bendera
+            </button>
+            <button class="btn btn-cari" onclick="bukaGame('cari-perkataan')">
+                <div class="icon">🔍</div> Cari Perkataan
+            </button>
+            <button class="btn btn-wordsearch" onclick="bukaGame('wordsearch')">
+                <div class="icon">🧩</div> WordSearch 1v1
+            </button>
+        </div>
+
+        <footer>&copy; 2026 Projek Akulas</footer>
     </div>
 
-    <footer>&copy; 2026 Projek Akulas</footer>
-</div>
+    <div id="game-overlay">
+        <button id="btn-close-game" onclick="tutupGame()">✕</button>
+        <iframe id="game-frame" src=""></iframe>
+    </div>
 
-<div id="install-banner">
-    <span style="font-weight:600; font-size:14px;">Pasang App Akulas?</span>
-    <button id="btn-install">PASANG</button>
-</div>
+    <div id="install-banner">
+        <span style="font-weight:600; font-size:14px;">Pasang App Akulas?</span>
+        <button id="btn-install">PASANG</button>
+    </div>
 
-<script>
-let deferredPrompt;
-const installBanner = document.getElementById('install-banner');
-const btnInstall = document.getElementById('btn-install');
+    <script>
+        let deferredPrompt;
+        const installBanner = document.getElementById('install-banner');
+        const btnInstall = document.getElementById('btn-install');
+        const portalUI = document.getElementById('portal-ui');
+        const gameOverlay = document.getElementById('game-overlay');
+        const gameFrame = document.getElementById('game-frame');
 
-// Kesan jika browser sokong install (PWA)
-window.addEventListener('beforeinstallprompt', (e) => {
-    e.preventDefault();
-    deferredPrompt = e;
-    installBanner.style.display = 'flex';
-});
+        // --- Logic PWA ---
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+            installBanner.style.display = 'flex';
+        });
 
-btnInstall.addEventListener('click', async () => {
-    if (deferredPrompt) {
-        deferredPrompt.prompt();
-        const { outcome } = await deferredPrompt.userChoice;
-        if (outcome === 'accepted') {
-            console.log('User pasang app');
+        btnInstall.addEventListener('click', async () => {
+            if (deferredPrompt) {
+                deferredPrompt.prompt();
+                const { outcome } = await deferredPrompt.userChoice;
+                deferredPrompt = null;
+                installBanner.style.display = 'none';
+            }
+        });
+
+        // --- Logic Navigasi Game (Iframe) ---
+        function bukaGame(game) {
+            const urls = {
+                'bendera': 'https://orgkampung-hub.github.io/Bendera-dunia/',
+                'cari-perkataan': 'https://orgkampung-hub.github.io/Cari-perkataan/',
+                'wordsearch': 'https://orgkampung-hub.github.io/wordsearch1v1/'
+            };
+
+            if (urls[game]) {
+                gameFrame.src = urls[game];
+                gameOverlay.style.display = 'block';
+                portalUI.style.display = 'none';
+            }
         }
-        deferredPrompt = null;
-        installBanner.style.display = 'none';
-    }
-});
 
-function navigasi(game) {
-    const urls = {
-        'bendera': 'https://orgkampung-hub.github.io/Bendera-dunia/',
-        'cari-perkataan': 'https://orgkampung-hub.github.io/Cari-perkataan/',
-        'wordsearch': 'https://orgkampung-hub.github.io/wordsearch1v1/'
-    };
-    if (urls[game]) window.location.href = urls[game];
-}
-</script>
+        function tutupGame() {
+            gameFrame.src = ""; // Matikan proses/suara game
+            gameOverlay.style.display = 'none';
+            portalUI.style.display = 'block';
+        }
 
+        // Handle butang back phone untuk tutup game juga
+        window.addEventListener('popstate', () => {
+            if (gameOverlay.style.display === 'block') {
+                tutupGame();
+            }
+        });
+    </script>
 </body>
 </html>
