@@ -5,153 +5,166 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Portal Projek Akulas</title>
 
+<link rel="manifest" href="manifest.json">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 
 <style>
-
-body{
-    margin:0;
-    font-family:'Poppins',sans-serif;
-    background:linear-gradient(135deg,#0f0f1a,#1b1b2f);
-    color:white;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    min-height:100vh;
+/* Animasi Masuk */
+@keyframes fadeInUp {
+    from { 
+        opacity: 0; 
+        transform: translateY(30px); 
+    }
+    to { 
+        opacity: 1; 
+        transform: translateY(0); 
+    }
 }
 
-.container{
-    width:90%;
-    max-width:500px;
-    text-align:center;
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #0f0f1a, #1b1b2f);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow: hidden;
 }
 
-h1{
-    font-size:26px;
-    margin-bottom:5px;
+.container {
+    width: 90%;
+    max-width: 500px;
+    text-align: center;
+    animation: fadeInUp 0.8s ease-out forwards;
 }
 
-p{
-    opacity:0.7;
-    font-size:14px;
+h1 { font-size: 26px; margin-bottom: 5px; }
+p { opacity: 0.7; font-size: 14px; margin-bottom: 30px; }
+
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 18px;
 }
 
-.menu-grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
-    gap:18px;
-    margin-top:30px;
+.btn {
+    border: none;
+    padding: 22px;
+    border-radius: 16px;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 600;
+    transition: 0.25s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
 }
 
-.btn{
-    border:none;
-    padding:22px;
-    border-radius:16px;
-    cursor:pointer;
-    font-size:15px;
-    font-weight:600;
-    transition:0.25s;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
+.icon { font-size: 32px; margin-bottom: 8px; }
+.btn-bendera { background: linear-gradient(135deg, #ff6b6b, #c44569); }
+.btn-cari { background: linear-gradient(135deg, #4ecdc4, #2d98da); }
+.btn-wordsearch { background: linear-gradient(135deg, #feca57, #ff9f43); color: black; }
+
+.btn:hover { 
+    transform: translateY(-6px); 
+    box-shadow: 0 10px 25px rgba(0,0,0,0.4); 
 }
 
-.icon{
-    font-size:32px;
-    margin-bottom:8px;
+/* Style Popup Install */
+#install-banner {
+    display: none;
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: white;
+    color: #1a1a1a;
+    padding: 12px 20px;
+    border-radius: 50px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+    z-index: 9999;
+    width: 85%;
+    max-width: 350px;
+    justify-content: space-between;
+    align-items: center;
+    animation: fadeInUp 0.5s ease-out;
 }
 
-.btn-bendera{
-    background:linear-gradient(135deg,#ff6b6b,#c44569);
+#btn-install {
+    background: #1b1b2f;
+    color: white;
+    border: none;
+    padding: 8px 18px;
+    border-radius: 25px;
+    font-weight: 700;
+    cursor: pointer;
+    font-size: 12px;
 }
 
-.btn-cari{
-    background:linear-gradient(135deg,#4ecdc4,#2d98da);
-}
-
-.btn-wordsearch{
-    background:linear-gradient(135deg,#feca57,#ff9f43);
-    color:black;
-}
-
-.btn:hover{
-    transform:translateY(-6px);
-    box-shadow:0 10px 25px rgba(0,0,0,0.4);
-}
-
-.btn:active{
-    transform:scale(0.96);
-}
-
-footer{
-    margin-top:30px;
-    font-size:12px;
-    opacity:0.5;
-}
-
+footer { margin-top: 30px; font-size: 12px; opacity: 0.5; }
 </style>
 </head>
 <body>
 
 <div class="container">
+    <h1>PORTAL PROJEK AKULAS</h1>
+    <p>Pilih modul permainan</p>
 
-<h1>PORTAL PROJEK AKULAS</h1>
-<p>Pilih modul permainan</p>
+    <div class="menu-grid">
+        <button class="btn btn-bendera" onclick="navigasi('bendera')">
+            <div class="icon">🚩</div> Game Bendera
+        </button>
+        <button class="btn btn-cari" onclick="navigasi('cari-perkataan')">
+            <div class="icon">🔍</div> Cari Perkataan
+        </button>
+        <button class="btn btn-wordsearch" onclick="navigasi('wordsearch')">
+            <div class="icon">🧩</div> WordSearch 1v1
+        </button>
+    </div>
 
-<div class="menu-grid">
-
-<button class="btn btn-bendera" onclick="pilihGame('bendera')">
-<div class="icon">🚩</div>
-Game Bendera
-</button>
-
-<button class="btn btn-cari" onclick="pilihGame('cari-perkataan')">
-<div class="icon">🔍</div>
-Cari Perkataan
-</button>
-
-<button class="btn btn-wordsearch" onclick="bukaWordsearch()">
-<div class="icon">🧩</div>
-WordSearch 1v1
-</button>
-
+    <footer>&copy; 2026 Projek Akulas</footer>
 </div>
 
-<footer>
-&copy; 2026 Projek Akulas
-</footer>
-
+<div id="install-banner">
+    <span style="font-weight:600; font-size:14px;">Pasang App Akulas?</span>
+    <button id="btn-install">PASANG</button>
 </div>
 
 <script>
+let deferredPrompt;
+const installBanner = document.getElementById('install-banner');
+const btnInstall = document.getElementById('btn-install');
 
-function pilihGame(jenis){
+// Kesan jika browser sokong install (PWA)
+window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();
+    deferredPrompt = e;
+    installBanner.style.display = 'flex';
+});
 
-    console.log("Butang ditekan: " + jenis);
-
-    if(jenis==='cari-perkataan'){
-        window.location.href=
-        "https://orgkampung-hub.github.io/Cari-perkataan/";
+btnInstall.addEventListener('click', async () => {
+    if (deferredPrompt) {
+        deferredPrompt.prompt();
+        const { outcome } = await deferredPrompt.userChoice;
+        if (outcome === 'accepted') {
+            console.log('User pasang app');
+        }
+        deferredPrompt = null;
+        installBanner.style.display = 'none';
     }
+});
 
-    else if(jenis==='bendera'){
-        window.location.href=
-        "https://orgkampung-hub.github.io/Bendera-dunia/";
-    }
-
+function navigasi(game) {
+    const urls = {
+        'bendera': 'https://orgkampung-hub.github.io/Bendera-dunia/',
+        'cari-perkataan': 'https://orgkampung-hub.github.io/Cari-perkataan/',
+        'wordsearch': 'https://orgkampung-hub.github.io/wordsearch1v1/'
+    };
+    if (urls[game]) window.location.href = urls[game];
 }
-
-function bukaWordsearch(){
-
-    console.log("Butang ditekan: wordsearch1v1");
-
-    window.location.href=
-    "https://orgkampung-hub.github.io/wordsearch1v1/";
-
-}
-
-console.log("Portal Projek Akulas: Tema Gelap Lembut diaktifkan.");
-
 </script>
 
 </body>

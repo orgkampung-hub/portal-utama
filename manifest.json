@@ -1,0 +1,21 @@
+{
+  "name": "Portal Projek Akulas",
+  "short_name": "Akulas",
+  "description": "Hab Permainan Projek Akulas",
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#0f0f1a",
+  "theme_color": "#1b1b2f",
+  "icons": [
+    {
+      "src": "portal.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "portal.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
