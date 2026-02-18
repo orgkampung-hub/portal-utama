@@ -1,37 +1,158 @@
 <!DOCTYPE html>
 <html lang="ms">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portal Projek Akulas</title>
-    <link rel="stylesheet" href="utama.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portal Projek Akulas</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+body{
+    margin:0;
+    font-family:'Poppins',sans-serif;
+    background:linear-gradient(135deg,#0f0f1a,#1b1b2f);
+    color:white;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:100vh;
+}
+
+.container{
+    width:90%;
+    max-width:500px;
+    text-align:center;
+}
+
+h1{
+    font-size:26px;
+    margin-bottom:5px;
+}
+
+p{
+    opacity:0.7;
+    font-size:14px;
+}
+
+.menu-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
+    gap:18px;
+    margin-top:30px;
+}
+
+.btn{
+    border:none;
+    padding:22px;
+    border-radius:16px;
+    cursor:pointer;
+    font-size:15px;
+    font-weight:600;
+    transition:0.25s;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+}
+
+.icon{
+    font-size:32px;
+    margin-bottom:8px;
+}
+
+.btn-bendera{
+    background:linear-gradient(135deg,#ff6b6b,#c44569);
+}
+
+.btn-cari{
+    background:linear-gradient(135deg,#4ecdc4,#2d98da);
+}
+
+.btn-wordsearch{
+    background:linear-gradient(135deg,#feca57,#ff9f43);
+    color:black;
+}
+
+.btn:hover{
+    transform:translateY(-6px);
+    box-shadow:0 10px 25px rgba(0,0,0,0.4);
+}
+
+.btn:active{
+    transform:scale(0.96);
+}
+
+footer{
+    margin-top:30px;
+    font-size:12px;
+    opacity:0.5;
+}
+
+</style>
 </head>
 <body>
 
-    <div class="container">
-        <header>
-            <h1>PORTAL PROJEK AKULAS</h1>
-            <p>Sila pilih modul permainan di bawah</p>
-        </header>
+<div class="container">
 
-        <div class="menu-grid">
-            <button class="btn btn-bendera" onclick="pilihGame('bendera')">
-                <div class="icon">🚩</div>
-                <span>Game Bendera</span>
-            </button>
+<h1>PORTAL PROJEK AKULAS</h1>
+<p>Pilih modul permainan</p>
 
-            <button class="btn btn-cari" onclick="pilihGame('cari-perkataan')">
-                <div class="icon">🔍</div>
-                <span>Cari Perkataan</span>
-            </button>
-        </div>
+<div class="menu-grid">
 
-        <footer>
-            <p>&copy; 2026 Projek Akulas</p>
-        </footer>
-    </div>
+<button class="btn btn-bendera" onclick="pilihGame('bendera')">
+<div class="icon">🚩</div>
+Game Bendera
+</button>
 
-    <script src="utama.js"></script>
+<button class="btn btn-cari" onclick="pilihGame('cari-perkataan')">
+<div class="icon">🔍</div>
+Cari Perkataan
+</button>
+
+<button class="btn btn-wordsearch" onclick="bukaWordsearch()">
+<div class="icon">🧩</div>
+WordSearch 1v1
+</button>
+
+</div>
+
+<footer>
+&copy; 2026 Projek Akulas
+</footer>
+
+</div>
+
+<script>
+
+function pilihGame(jenis){
+
+    console.log("Butang ditekan: " + jenis);
+
+    if(jenis==='cari-perkataan'){
+        window.location.href=
+        "https://orgkampung-hub.github.io/Cari-perkataan/";
+    }
+
+    else if(jenis==='bendera'){
+        window.location.href=
+        "https://orgkampung-hub.github.io/Bendera-dunia/";
+    }
+
+}
+
+function bukaWordsearch(){
+
+    console.log("Butang ditekan: wordsearch1v1");
+
+    window.location.href=
+    "https://orgkampung-hub.github.io/wordsearch1v1/";
+
+}
+
+console.log("Portal Projek Akulas: Tema Gelap Lembut diaktifkan.");
+
+</script>
+
 </body>
 </html>
